@@ -15,12 +15,14 @@ npm install --save reactoasts
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'reactoasts'
-import 'reactoasts/dist/index.css'
+import Toast from 'reactoasts'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <Toast 
+        toastList={list}
+        position={position}
+      />
   }
 }
 ```

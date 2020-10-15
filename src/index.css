@@ -89,10 +89,10 @@
 }
 
 .toast {
-  height: 50px;
+  height: 40px;
   width: 365px;
   color: #fff;
-  padding: 20px 15px 10px 10px;
+  padding: 10px 15px 10px 10px;
 }
 
 .notification-container button {

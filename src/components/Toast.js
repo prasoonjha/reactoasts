@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import '../index.css';
 
 const Toast = props => {
-    const { toastList, position, autoDelete, dismissTime } = props;
+    const { toastList, position} = props;
     const [list, setList] = useState(toastList);
 
     useEffect(() => {
@@ -11,20 +11,6 @@ const Toast = props => {
 
         // eslint-disable-next-line
     }, [toastList]);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            if (autoDelete && toastList.length && list.length) {
-                deleteToast(toastList[0].id);
-            }
-        }, dismissTime);
-        
-        return () => {
-            clearInterval(interval);
-        }
-
-        // eslint-disable-next-line
-    }, [toastList, autoDelete, dismissTime, list]);
 
     const deleteToast = id => {
         const listItemIndex = list.findIndex(e => e.id === id);

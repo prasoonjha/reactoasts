@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Toast from 'reactoasts';
 
+//add optional custom svg icons in assets folder
 import checkIcon from './assets/check.svg';
 import errorIcon from './assets/error.svg';
 import infoIcon from './assets/info.svg';
@@ -41,7 +42,6 @@ const App = () => {
   const [list, setList] = useState([]);
   const [position, setPosition] = useState('Select Position');
   let [checkValue, setCheckValue] = useState(false);
-  const [autoDeleteTime, setAutoDeleteTime] = useState(0);
   let toastProperties = null;
 
   const selectPosition = (e) => {
@@ -103,11 +103,6 @@ const App = () => {
     setList([]);
   }
 
-  const onInputChange = (e) => {
-    const time = parseInt(e.target.value, 10);
-    setAutoDeleteTime(time);
-  }
-
   return (
     <div className="app">
       <div className="app-header">
@@ -133,18 +128,9 @@ const App = () => {
             value={checkValue}
             onChange={onCheckBoxChange}
           />
-          <label htmlFor="auto">Auto Dismiss</label>
+          <label htmlFor="auto">Dismiss all</label>
         </div>
-        <div className="select">
-          <input 
-            className={`${!checkValue ? 'disabled' : ''}`}
-            type="text"
-            name="checkbox"
-            placeholder="Dismiss time Ex: 3000"
-            autoComplete="false"
-            onChange={onInputChange}
-          />
-        </div>
+        
         <div className="select">
           <select
             name="position"
@@ -164,8 +150,6 @@ const App = () => {
       <Toast 
         toastList={list}
         position={position}
-        autoDelete={checkValue}
-        autoDeleteTime={autoDeleteTime}
       />
     </div>
   );
